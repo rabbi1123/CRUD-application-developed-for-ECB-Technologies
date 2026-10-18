@@ -27,11 +27,6 @@ Repository: [rabbi1123/CRUD-application-developed-for-ECB-Technologies](https://
 - [Database design](#database-design)
 - [Testing and code quality](#testing-and-code-quality)
 - [CI/CD and deployment](#cicd-and-deployment)
-- [Screenshots and demonstrations](#screenshots-and-demonstrations)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
 
 ## Overview
 
@@ -52,13 +47,7 @@ Public registration always creates a **User**. Checker and Authorizer accounts a
 - Keep domain rules independent of ASP.NET Core and Entity Framework.
 - Start the API, apply migrations, and seed demo users with one command.
 
-### Who it is for
-
-Software engineers reviewing the design, recruiters evaluating backend work, and contributors who want a small, tested .NET API to extend.
-
 ## Key features
-
-### Implemented
 
 - **Request workflow.** Pending → Checked → Authorized, with rejection from either review stage. An owner who edits a rejected request sends it back to Pending, and the previous review fields are cleared.
 - **Ownership rules.** Users list and open only their own requests. Checkers see pending requests. Authorizers see checked requests.
@@ -73,10 +62,6 @@ Software engineers reviewing the design, recruiters evaluating backend work, and
 - **Automatic database setup.** Startup applies EF Core migrations and seeds demo users when the user table is empty.
 - **Docker Compose** for SQL Server 2022 and the API. The API container starts after SQL Server is healthy.
 - **Automated tests** for handlers, infrastructure, and controller contracts, run in GitHub Actions.
-
-### Planned
-
-Planned work is listed in [Roadmap](#roadmap). It is not part of the current API.
 
 ## Technology stack
 
@@ -639,45 +624,3 @@ The image listens on port `8080`. Running it still requires the connection strin
 - Deploying to a host
 - Coverage upload
 - Integration tests against SQL Server
-
-## Screenshots and demonstrations
-
-No screenshots, GIFs, or hosted demo are checked in.
-
-| Placeholder | Intended content |
-| --- | --- |
-| `docs/screenshots/swagger.png` | Swagger UI after login |
-| `docs/screenshots/workflow.gif` | Create, check, and authorize a request |
-
-Until those assets exist, run the API and open `/swagger`.
-
-## Roadmap
-
-- A small UI for the User, Checker, and Authorizer queues
-- Logout and explicit refresh-token revocation
-- An admin path for assigning Checker and Authorizer roles
-- HTTPS termination and a non-development configuration profile
-- Integration tests against SQL Server
-- Coverage collection in CI
-- A health endpoint for the API
-- A history of status changes, beyond the latest checker and authorizer fields
-- Publishing the Docker image from GitHub Actions
-
-## Contributing
-
-1. Fork the repository and clone your fork.
-2. Create a branch from the current default branch.
-3. Keep changes focused. Domain rules belong in `Project.Application` handlers, persistence in `Project.Infrastructure`, and HTTP details in `Project.API`.
-4. Add or update tests for behavior you change.
-5. Run `dotnet test Backend/Project.sln --configuration Release`.
-6. Open a pull request. Pull requests into `master` run the unit tests and a Docker image build.
-
-The development connection string, SQL password, JWT key, issuer, audience, and seed password are listed in [Configuration](#configuration). `.env` stays gitignored.
-
-## License
-
-A license has not been added to this repository. All rights belong to the copyright holder until a `LICENSE` file is published.
-
-## Contact
-
-Questions and issues go through the [GitHub repository](https://github.com/rabbi1123/CRUD-application-developed-for-ECB-Technologies).
